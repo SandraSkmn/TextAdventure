@@ -17,14 +17,16 @@ import javax.swing.SwingConstants;
 
 public class Game {
 	
-	JFrame window; //Using JFrame to create window for game GUI
+	//Variables for game//
+	
+	JFrame window; 
 	Container con;
-	JPanel titlePanel, grimPanel, startPanel, gamePanel, buttonPanel, statusPanel, invPanel, imgPanel, playAgainPanel, endPanel, endImgPanel, losePanel, loseImgPanel, playAgainLosePanel; //Panels for game
-	JLabel titleLabel, grimLabel, hpLabel, invLabel, imgLabel, endLabel, endImgLabel, loseLabel, loseImgLabel, gameImageLabel; //For text and images
-	Font titleFont = new Font("Chiller", Font.PLAIN, 100); //Setting title font
-	Font defaultFont = new Font("Courier New", Font.PLAIN, 28); //Setting other font
-	Font smallFont = new Font("Courier New", Font.PLAIN, 20); //Small font
-	Font verySmallFont = new Font("Courier New", Font.PLAIN, 18); //Very small font
+	JPanel titlePanel, grimPanel, startPanel, gamePanel, buttonPanel, statusPanel, invPanel, imgPanel, playAgainPanel, endPanel, endImgPanel, losePanel, loseImgPanel, playAgainLosePanel; 
+	JLabel titleLabel, grimLabel, hpLabel, invLabel, imgLabel, endLabel, endImgLabel, loseLabel, loseImgLabel, gameImageLabel; 
+	Font titleFont = new Font("Chiller", Font.PLAIN, 100); 
+	Font defaultFont = new Font("Courier New", Font.PLAIN, 28);
+	Font smallFont = new Font("Courier New", Font.PLAIN, 20); 
+	Font verySmallFont = new Font("Courier New", Font.PLAIN, 18); 
 	JButton startButton, choice1, choice2, choice3, choice4, playAgainButton, playAgainLoseButton; 
 	ImageIcon grimage, endImage, loseImage, gameImage;
 	JTextArea mainTextArea; 
@@ -38,6 +40,8 @@ public class Game {
 	boolean spiritAlive, keyRetrieved, berriesPicked, berriesFed, vialRetrieved, doorOpen, creatureDead, creatureDaisy, vialThrown;
 	Boolean[] playerInv = {false, false, false, false};
 	String position, imageName;
+	
+	
 
 	public static void main(String[] args) {
 		
@@ -46,30 +50,32 @@ public class Game {
 
 	}
 	
+	//Starts game and creates window//
+	
 	public Game() {
 		
 		//Window settings//
 		window = new JFrame();
-		window.setSize(800, 600); //Setting window dimensions//
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Allows closing window with 'X'
+		window.setSize(800, 600); 
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		
-		window.getContentPane().setBackground(Color.black); //Background colour of window
-		window.setLayout(null); //Disables default layout
-		window.setResizable(false); //Cannot be resized
-		window.setTitle("Grim's Adventure"); //Title of window
-		window.setLocationRelativeTo(null); //So window appears in centre
+		window.getContentPane().setBackground(Color.black);
+		window.setLayout(null); 
+		window.setResizable(false); 
+		window.setTitle("Grim's Adventure"); 
+		window.setLocationRelativeTo(null); 
 		
-		con = window.getContentPane(); //Creating container for other objects within window
+		con = window.getContentPane(); 
 		
 		//Title panel settings//
 		
 		titlePanel = new JPanel();
-		titlePanel.setBounds(100, 100, 600, 150); //Box for title - starts at 100px to left and down, width is 600px, height is 150px
+		titlePanel.setBounds(100, 100, 600, 150); 
 		titlePanel.setBackground(Color.black);
 		
-		titleLabel = new JLabel("Grim's Adventure"); //Set title for game to show
-		titleLabel.setForeground(Color.white); //Sets text colour
-		titleLabel.setFont(titleFont); //Sets font as defined above
+		titleLabel = new JLabel("Grim's Adventure"); 
+		titleLabel.setForeground(Color.white); 
+		titleLabel.setFont(titleFont);
 		
 		//Picture of grim//
 		grimPanel = new JPanel();
@@ -79,7 +85,7 @@ public class Game {
 		grimage = new ImageIcon(getClass().getResource("/Images/Grim_art.jpg"));
 		grimLabel = new JLabel(grimage);
 		
-		//Same as title panel but for start button panel//
+		//Start button panel//
 		startPanel = new JPanel();
 		startPanel.setBounds(275, 420, 250, 70);
 		startPanel.setBackground(Color.black);
@@ -89,22 +95,24 @@ public class Game {
 		startButton.setBackground(Color.black);
 		startButton.setForeground(Color.white);
 		startButton.setFont(defaultFont);
-		startButton.setFocusPainted(false); //Removes inner border around start button text
-		startButton.addActionListener(tsHandler); //Adds function to button to run tsHandler code when clicked
+		startButton.setFocusPainted(false); 
+		startButton.addActionListener(tsHandler); 
 		
 		
 		//Placing everything//
-		titlePanel.add(titleLabel); //Adds label to above title panel
-		startPanel.add(startButton); //Adds button to start panel
-		grimPanel.add(grimLabel); //Adds grim to panel
-		con.add(titlePanel); //Adding title panel to container
-		con.add(startPanel); //Adding start panel to container
-		con.add(grimPanel); //Adding panel with grim to container
+		titlePanel.add(titleLabel);
+		startPanel.add(startButton); 
+		grimPanel.add(grimLabel); 
+		con.add(titlePanel); 
+		con.add(startPanel);
+		con.add(grimPanel); 
 		
 		
-		window.setVisible(true); //So window can actually show
+		window.setVisible(true);
 	
 	}
+	
+	//Creates playable game screen//
 	
 	public void createGameScreen() {
 		
@@ -166,7 +174,7 @@ public class Game {
 		mainTextArea.setBackground(Color.black);
 		mainTextArea.setForeground(Color.white);
 		mainTextArea.setFont(smallFont);
-		mainTextArea.setLineWrap(true); //Sets line wrap if text is out of bounds
+		mainTextArea.setLineWrap(true); 
 		
 		gamePanel.add(mainTextArea);
 		
@@ -176,7 +184,7 @@ public class Game {
 		buttonPanel = new JPanel();
 		buttonPanel.setBounds(300, 350, 400, 150);
 		buttonPanel.setBackground(Color.black);
-		buttonPanel.setLayout(new GridLayout(4,1)); //Sets buttons in an arrangement of 4x1 (i.e. in a single column) rather than default
+		buttonPanel.setLayout(new GridLayout(4,1)); 
 		
 		con.add(buttonPanel);
 		
@@ -249,7 +257,7 @@ public class Game {
 	//End screen setup//
 	
 	public void createEndScreen() {
-		//Gets rid of game panels except image//
+		//Gets rid of game panels//
 		statusPanel.setVisible(false);
 		gamePanel.setVisible(false);
 		buttonPanel.setVisible(false);
@@ -345,7 +353,7 @@ public class Game {
 	}
 	
 	
-	//Gives functionality to start button to change to game screen when clicked//
+	//Gives functionality to start/play again buttons to change to game screen when clicked//
 	
 	public class TitleScreenHandler implements ActionListener {
 		
@@ -380,6 +388,7 @@ public class Game {
 	//Adds setup details to game//
 	
 	public void setPlayer() {
+		//Setting all initial variables//
 		playerHP = 20;
 		bearHP = 20;
 		playerInv[0] = false;
@@ -400,6 +409,8 @@ public class Game {
 		hpLabel.setText("HP: " + playerHP);
 		invLabel.setText("Inventory: ");
 		
+		
+		//Using setters to define attributes of GameDecision objects//
 		
 		lightningSwear.setGameText("A large bolt of lightning crashes from the sky. \nElectricity jolts through you. \nYou hear the booming voice again: \n\n'Try swear at me one more time, I dare you.' \n\nYou lose 10HP.");
 		lightningSwear.setImgName("blightning.jpg");
@@ -625,17 +636,8 @@ public class Game {
 	public void playDecision(GameDecision game) {
 		position = game.getPosition();
 		mainTextArea.setText(game.getGameText());
-//		imageName = game.getImgName();
-//		gameImgPanel = new JPanel();
-//		gameImgPanel.setBounds(100, 350, 190, 150);
-//		gameImgPanel.setBackground(Color.black);
-//		con.add(gameImgPanel);
-//		gameImage = new ImageIcon(getClass().getResource(imageName));
-//		gameImageLabel = new JLabel(gameImage);
-//		gameImgPanel.add(gameImageLabel);
-//		gameImgPanel.setVisible(showGameImage);
+
 		showImage(game);
-		
 		
 		choice1.setText(game.getOption1());
 		choice2.setText(game.getOption2());
